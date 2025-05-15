@@ -43,7 +43,7 @@ export function FloatingNavbar() {
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="flex items-center justify-between w-full max-w-[100vw] px-2 py-2 bg-black/80 backdrop-blur-sm border border-blue-600/70 rounded-full overflow-x-auto scrollbar-hide"
+          className="flex items-center justify-between w-full max-w-[100vw] px-2 py-2 bg-black/80 backdrop-blur-sm border border-blue-600/70 rounded-full"
         >
           <MobileNavItem href="#home" active={active === "home"} onClick={() => setActive("home")}>
             <IconHome size={20} />
@@ -118,7 +118,7 @@ const MobileNavItem = ({
       href={href}
       onClick={onClick}
       className={cn(
-        "flex flex-col items-center px-2 py-1 rounded-full text-sm transition-colors",
+        "flex flex-col items-center w-[16%] p-1 rounded-full transition-colors",
         active ? "bg-blue-900 text-white" : "text-neutral-300 hover:text-white"
       )}
     >
