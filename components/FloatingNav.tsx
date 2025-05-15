@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { FloatingNav } from "../components/ui/floating-navbar";
-import { IconHome, IconMessage, IconUser, IconBriefcase, IconTools, IconStack, IconMail } from "@tabler/icons-react";
+import { IconHome, IconUser, IconBriefcase, IconTools, IconStack, IconMail } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -39,12 +39,14 @@ export function FloatingNavbar() {
       </div>
 
       {/* Mobile Navbar (hidden on desktop) */}
-      <div className="md:hidden fixed bottom-4 inset-x-0 z-50 w-full px-2">
+      <div className="md:hidden fixed bottom-4 inset-x-0 z-50 w-full px-4">
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="flex items-center justify-between w-full max-w-[100vw] px-2 py-2 bg-black/80 backdrop-blur-sm border border-blue-600/70 rounded-full"
+          className="mx-auto w-max px-4 py-2 bg-black/80 backdrop-blur-sm border border-blue-600/70 rounded-full"
         >
+          <div className="flex items-center gap-2">
+
           <MobileNavItem href="#home" active={active === "home"} onClick={() => setActive("home")}>
             <IconHome size={20} />
             <span className="text-[10px]">Home</span>
@@ -69,6 +71,7 @@ export function FloatingNavbar() {
             <IconMail size={20} />
             <span className="text-[10px]">Contact</span>
           </MobileNavItem>
+          </div>
         </motion.div>
       </div>
     </>
@@ -118,7 +121,7 @@ const MobileNavItem = ({
       href={href}
       onClick={onClick}
       className={cn(
-        "flex flex-col items-center w-[16%] p-1 rounded-full transition-colors",
+        "flex flex-col items-center w-[60px] p-1 rounded-full transition-colors flex-shrink-0",
         active ? "bg-blue-900 text-white" : "text-neutral-300 hover:text-white"
       )}
     >
