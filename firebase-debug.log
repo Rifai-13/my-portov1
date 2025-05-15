@@ -1,0 +1,57 @@
+[debug] [2025-05-15T07:09:40.907Z] ----------------------------------------------------------------------
+[debug] [2025-05-15T07:09:40.909Z] Command:       C:\laragon\bin\nodejs\node-v22\node.exe C:\laragon\bin\nodejs\node-v22\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2025-05-15T07:09:40.910Z] CLI Version:   14.3.1
+[debug] [2025-05-15T07:09:40.910Z] Platform:      win32
+[debug] [2025-05-15T07:09:40.910Z] Node Version:  v22.14.0
+[debug] [2025-05-15T07:09:40.910Z] Time:          Thu May 15 2025 14:09:40 GMT+0700 (Western Indonesia Time)
+[debug] [2025-05-15T07:09:40.910Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-15T07:09:41.081Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-15T07:09:41.082Z] > authorizing via signed-in user (rifaimuh608@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\Dari E\Project web\my-porto
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-05-15T07:09:42.249Z] Using project from CLI flag: portofolio-3ca58
+[debug] [2025-05-15T07:09:42.250Z] Checked if tokens are valid: true, expires at: 1747294905194
+[debug] [2025-05-15T07:09:42.250Z] Checked if tokens are valid: true, expires at: 1747294905194
+[debug] [2025-05-15T07:09:42.251Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/portofolio-3ca58 [none]
+[debug] [2025-05-15T07:09:42.757Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/portofolio-3ca58 200
+[debug] [2025-05-15T07:09:42.757Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/portofolio-3ca58 {"projectId":"portofolio-3ca58","projectNumber":"206879773777","displayName":"Portofolio","name":"projects/portofolio-3ca58","resources":{"hostingSite":"portofolio-3ca58"},"state":"ACTIVE","etag":"1_40f3df27-452a-4e38-99fd-ab638b8d770d"}
+[info] i  Using project portofolio-3ca58 (Portofolio) 
+[info] 
+=== Hosting Setup
+[debug] [2025-05-15T07:09:42.763Z] Checked if tokens are valid: true, expires at: 1747294905194
+[debug] [2025-05-15T07:09:42.763Z] Checked if tokens are valid: true, expires at: 1747294905194
+[debug] [2025-05-15T07:09:42.763Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/portofolio-3ca58 [none]
+[debug] [2025-05-15T07:09:44.086Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/portofolio-3ca58 200
+[debug] [2025-05-15T07:09:44.086Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/portofolio-3ca58 {"projectId":"portofolio-3ca58","projectNumber":"206879773777","displayName":"Portofolio","name":"projects/portofolio-3ca58","resources":{"hostingSite":"portofolio-3ca58"},"state":"ACTIVE","etag":"1_40f3df27-452a-4e38-99fd-ab638b8d770d"}
+[debug] [2025-05-15T07:10:01.435Z] Error: Command failed: npx --yes create-next-app@"12 - 15.0" -e hello-world app --use-npm --ts
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at checkExecSyncError (node:child_process:882:11)
+    at execSync (node:child_process:954:15)
+    at Object.init (C:\laragon\bin\nodejs\node-v22\node_modules\firebase-tools\lib\frameworks\next\index.js:216:34)
+    at async doSetup (C:\laragon\bin\nodejs\node-v22\node_modules\firebase-tools\lib\init\features\hosting\index.js:108:13)
+    at async init (C:\laragon\bin\nodejs\node-v22\node_modules\firebase-tools\lib\init\index.js:41:9)
+    at async Command.initAction [as actionFn] (C:\laragon\bin\nodejs\node-v22\node_modules\firebase-tools\lib\commands\init.js:187:5)
+[error] 
+[error] Error: An unexpected error has occurred.

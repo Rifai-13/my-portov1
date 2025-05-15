@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 // import { FloatingNav } from "@/components/ui/floating-navbar";
 import { FloatingNavbar } from "@/components/FloatingNav";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
       >
         <FloatingNavbar />
         {children}
+        <Analytics />
       </body>
     </html>
   );
