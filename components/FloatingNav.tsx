@@ -45,8 +45,6 @@ export function FloatingNavbar() {
           animate={{ y: 0, opacity: 1 }}
           className="mx-auto w-max px-4 py-2 bg-black/80 backdrop-blur-sm border border-blue-600/70 rounded-full"
         >
-          <div className="flex items-center gap-2">
-
           <MobileNavItem href="#home" active={active === "home"} onClick={() => setActive("home")}>
             <IconHome size={20} />
             <span className="text-[10px]">Home</span>
@@ -71,7 +69,6 @@ export function FloatingNavbar() {
             <IconMail size={20} />
             <span className="text-[10px]">Contact</span>
           </MobileNavItem>
-          </div>
         </motion.div>
       </div>
     </>
