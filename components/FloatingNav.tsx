@@ -39,7 +39,7 @@ export function FloatingNavbar() {
       </div>
 
       {/* Mobile Navbar (hidden on desktop) */}
-      <div className="md:hidden fixed bottom-4 inset-x-0 z-50 w-full px-4">
+      <div className="hidden md:block fixed top-10 inset-x-0 z-50">
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
