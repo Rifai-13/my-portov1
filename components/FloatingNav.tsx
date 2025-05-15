@@ -11,11 +11,11 @@ export function FloatingNavbar() {
   return (
     <>
       {/* Desktop Navbar (hidden on mobile) */}
-      <div className="hidden md:block fixed top-10 inset-x-0 max-w-fit mx-auto z-50">
+      <div className="hidden md:block fixed top-10 inset-x-0 z-50">
         <motion.div
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="flex items-center gap-2 px-4 py-2 rounded-full border border-blue-600/70 bg-black/80 backdrop-blur-sm"
+          className="flex items-center justify-center gap-1 mx-auto w-max px-4 py-2 rounded-full border border-blue-600/70 bg-black/80 backdrop-blur-sm"
         >
           <NavItem href="#home" active={active === "home"} onClick={() => setActive("home")}>
             Home
@@ -39,11 +39,11 @@ export function FloatingNavbar() {
       </div>
 
       {/* Mobile Navbar (hidden on desktop) */}
-      <div className="md:hidden fixed bottom-4 inset-x-0 w-full z-50 px-4">
+      <div className="md:hidden fixed bottom-4 inset-x-0 z-50 w-full px-2">
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="flex items-center justify-center gap-1 px-2 py-2 rounded-full border border-blue-600/70 bg-black/80 backdrop-blur-sm mx-auto overflow-x-auto"
+          className="flex items-center justify-between w-full max-w-[100vw] px-2 py-2 bg-black/80 backdrop-blur-sm border border-blue-600/70 rounded-full overflow-x-auto scrollbar-hide"
         >
           <MobileNavItem href="#home" active={active === "home"} onClick={() => setActive("home")}>
             <IconHome size={20} />
@@ -118,7 +118,7 @@ const MobileNavItem = ({
       href={href}
       onClick={onClick}
       className={cn(
-         "flex flex-col items-center px-2 py-1 rounded-full text-sm transition-colors",
+        "flex flex-col items-center px-2 py-1 rounded-full text-sm transition-colors",
         active ? "bg-blue-900 text-white" : "text-neutral-300 hover:text-white"
       )}
     >
