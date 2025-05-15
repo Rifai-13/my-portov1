@@ -47,27 +47,27 @@ export function FloatingNavbar() {
         >
           <MobileNavItem href="#home" active={active === "home"} onClick={() => setActive("home")}>
             <IconHome size={20} />
-            <span className="text-xs">Home</span>
+            <span className="text-[10px]">Home</span>
           </MobileNavItem>
           <MobileNavItem href="#about" active={active === "about"} onClick={() => setActive("about")}>
             <IconUser size={20} />
-            <span className="text-xs">About</span>
+            <span className="text-[10px]">About</span>
           </MobileNavItem>
           <MobileNavItem href="#experience" active={active === "experience"} onClick={() => setActive("experience")}>
             <IconBriefcase size={20} />
-            <span className="text-xs">Exp</span>
+            <span className="text-[10px]">Exp</span>
           </MobileNavItem>
           <MobileNavItem href="#skills" active={active === "skills"} onClick={() => setActive("skills")}>
             <IconTools size={20} />
-            <span className="text-xs">Skills</span>
+            <span className="text-[10px]">Skills</span>
           </MobileNavItem>
           <MobileNavItem href="#projects" active={active === "projects"} onClick={() => setActive("projects")}>
             <IconStack size={20} />
-            <span className="text-xs">Projects</span>
+            <span className="text-[10px]">Projects</span>
           </MobileNavItem>
           <MobileNavItem href="#contact" active={active === "contact"} onClick={() => setActive("contact")}>
             <IconMail size={20} />
-            <span className="text-xs">Contact</span>
+            <span className="text-[10px]">Contact</span>
           </MobileNavItem>
         </motion.div>
       </div>
