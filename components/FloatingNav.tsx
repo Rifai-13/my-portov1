@@ -39,11 +39,11 @@ export function FloatingNavbar() {
       </div>
 
       {/* Mobile Navbar (hidden on desktop) */}
-      <div className="hidden md:block fixed top-10 inset-x-0 z-50">
+      <div className="md:hidden fixed bottom-4 inset-x-0 z-50 w-full px-2">
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="mx-auto w-max px-4 py-2 bg-black/80 backdrop-blur-sm border border-blue-600/70 rounded-full"
+          className="mx-auto max-w-[95vw] px-2 py-2 bg-black/80 backdrop-blur-sm border border-blue-600/70 rounded-full overflow-hidden"
         >
           <MobileNavItem href="#home" active={active === "home"} onClick={() => setActive("home")}>
             <IconHome size={20} />
@@ -92,7 +92,7 @@ const NavItem = ({
       href={href}
       onClick={onClick}
       className={cn(
-        "px-4 py-2 rounded-full text-sm transition-colors",
+        "flex flex-col items-center min-w-[60px] p-1 rounded-full transition-colors flex-shrink-0",
         active ? "bg-blue-900 text-white" : "text-neutral-300 hover:text-white"
       )}
     >
