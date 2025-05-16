@@ -11,7 +11,7 @@ export function FloatingNavbar() {
   return (
     <>
       {/* Desktop Navbar (hidden on mobile) */}
-      <div className="fixed top-10 inset-x-0 max-w-fit mx-auto z-50">
+      <div className="hidden md:block fixed top-10 inset-x-0 max-w-fit mx-auto z-50">
         <motion.div
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -43,7 +43,7 @@ export function FloatingNavbar() {
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="flex items-center justify-between w-full max-w-[100vw] px-2 py-2 bg-black/80 backdrop-blur-sm border border-blue-600/70 rounded-full"
+          className="flex items-center justify-between w-full px-2 py-2 bg-black/80 backdrop-blur-sm border border-blue-600/70 rounded-full overflow-hidden"
         >
           <MobileNavItem href="#home" active={active === "home"} onClick={() => setActive("home")}>
             <IconHome size={20} />
@@ -92,7 +92,7 @@ const NavItem = ({
       href={href}
       onClick={onClick}
       className={cn(
-        "flex flex-col items-center w-[16%] p-1 rounded-full transition-colors",
+        "flex flex-col items-center p-1 rounded-full transition-colors",
         active ? "bg-blue-900 text-white" : "text-neutral-300 hover:text-white"
       )}
     >
@@ -118,7 +118,7 @@ const MobileNavItem = ({
       href={href}
       onClick={onClick}
       className={cn(
-        "flex flex-col items-center w-[60px] p-1 rounded-full transition-colors flex-shrink-0",
+        "flex flex-col items-center flex-1 p-1 rounded-full transition-colors min-w-[50px]",
         active ? "bg-blue-900 text-white" : "text-neutral-300 hover:text-white"
       )}
     >
