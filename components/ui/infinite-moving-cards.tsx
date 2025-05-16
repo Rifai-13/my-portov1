@@ -2,18 +2,18 @@
 
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
   speed = "fast",
-  pauseOnHover = true,
+  pauseOnHover = false,
   className,
 }: {
   items: {
-    quote: string;
     name: string;
-    title: string;
+    imageSrc: string;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -21,20 +21,46 @@ export const InfiniteMovingCards = ({
   className?: string;
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const scrollerRef = React.useRef<HTMLUListElement>(null);
+  const scrollerRef1 = React.useRef<HTMLUListElement>(null);
+  const scrollerRef2 = React.useRef<HTMLUListElement>(null);
+  const scrollerRef3 = React.useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     addAnimation();
   }, []);
-  const [start, setStart] = useState(false);
-  function addAnimation() {
-    if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children);
 
-      scrollerContent.forEach((item) => {
+  const [start, setStart] = useState(false);
+
+  function addAnimation() {
+    if (
+      containerRef.current &&
+      scrollerRef1.current &&
+      scrollerRef2.current &&
+      scrollerRef3.current
+    ) {
+      // Duplicating content for infinite scroll effect
+      const scrollerContent1 = Array.from(scrollerRef1.current.children);
+      const scrollerContent2 = Array.from(scrollerRef2.current.children);
+      const scrollerContent3 = Array.from(scrollerRef3.current.children);
+
+      scrollerContent1.forEach((item) => {
         const duplicatedItem = item.cloneNode(true);
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem);
+        if (scrollerRef1.current) {
+          scrollerRef1.current.appendChild(duplicatedItem);
+        }
+      });
+
+      scrollerContent2.forEach((item) => {
+        const duplicatedItem = item.cloneNode(true);
+        if (scrollerRef2.current) {
+          scrollerRef2.current.appendChild(duplicatedItem);
+        }
+      });
+
+      scrollerContent3.forEach((item) => {
+        const duplicatedItem = item.cloneNode(true);
+        if (scrollerRef3.current) {
+          scrollerRef3.current.appendChild(duplicatedItem);
         }
       });
 
@@ -43,75 +69,156 @@ export const InfiniteMovingCards = ({
       setStart(true);
     }
   }
+
   const getDirection = () => {
     if (containerRef.current) {
-      if (direction === "left") {
+      if (direction === "right") {
         containerRef.current.style.setProperty(
           "--animation-direction",
-          "forwards",
+          "forwards"
         );
       } else {
         containerRef.current.style.setProperty(
           "--animation-direction",
-          "reverse",
+          "reverse"
         );
       }
     }
   };
+
   const getSpeed = () => {
     if (containerRef.current) {
-      if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "20s");
-      } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "40s");
-      } else {
-        containerRef.current.style.setProperty("--animation-duration", "80s");
+      // Setting speed for each layer
+      const speedDurations = {
+        fast: "40s",
+        normal: "60s",
+        slow: "60s",
+      };
+
+      // Layer 1: Fast speed
+      if (scrollerRef1.current && scrollerRef1.current.style) {
+        scrollerRef1.current.style.animationDuration = speedDurations[speed] || speedDurations.fast;
+      }
+
+      // Layer 2: Normal speed (this remains the same for Layer 2)
+      if (scrollerRef2.current && scrollerRef2.current.style) {
+        scrollerRef2.current.style.animationDuration = speedDurations[speed] || speedDurations.normal;
+      }
+
+      // Layer 3: Slower speed
+      if (scrollerRef3.current && scrollerRef3.current.style) {
+        scrollerRef3.current.style.animationDuration = speedDurations[speed] || speedDurations.slow; // Layer 3 slower
       }
     }
   };
+
   return (
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
-        className,
+        "relative z-20 max-w-7xl overflow-hidden",
+        "[mask-image:linear-gradient(to_right,transparent,white_2%,white_98%,transparent)]",
+        "xs:[mask-image:linear-gradient(to_right,transparent,white_5%,white_95%,transparent)]",
+        "sm:[mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        className
       )}
     >
-      <ul
-        ref={scrollerRef}
-        className={cn(
-          "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
-          start && "animate-scroll",
-          pauseOnHover && "hover:[animation-play-state:paused]",
-        )}
-      >
-        {items.map((item, idx) => (
-          <li
-            className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-b-0 border-zinc-200 bg-[linear-gradient(180deg,#fafafa,#f5f5f5)] px-8 py-6 md:w-[450px] dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)]"
-            key={item.name}
-          >
-            <blockquote>
-              <div
-                aria-hidden="true"
-                className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-              ></div>
-              <span className="relative z-20 text-sm leading-[1.6] font-normal text-neutral-800 dark:text-gray-100">
-                {item.quote}
-              </span>
-              <div className="relative z-20 mt-6 flex flex-row items-center">
-                <span className="flex flex-col gap-1">
-                  <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
-                    {item.name}
-                  </span>
-                  <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
-                    {item.title}
-                  </span>
-                </span>
-              </div>
-            </blockquote>
-          </li>
-        ))}
-      </ul>
+      <div className="flex flex-col gap-4">
+        {/* Desktop View - Layer 1 */}
+        <ul
+          ref={scrollerRef1}
+          className={cn(
+            "flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
+            start && "animate-scroll",
+            pauseOnHover && "hover:[animation-play-state:paused]"
+          )}
+          style={{ animationDirection: "reverse"}}
+        >
+          {items.map((item) => (
+            <li
+              key={item.name}
+              className="flex items-center p-2 bg-black rounded-xl border-2 border-gray-600 hover:border-blue-500"
+              style={{
+                width: "120px",
+                height: "40px",
+              }}
+            >
+              <Image
+                src={item.imageSrc}
+                alt={item.name}
+                width={25}
+                height={20}
+                className="w-6 h-6 object-contain"
+              />
+              <span className="text-sm ml-3 text-gray-100 font-medium">{item.name}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Layer 2 (Move from left to right) */}
+        <ul
+          ref={scrollerRef2}
+          className={cn(
+            "flex min-w-full shrink-0 gap-2 py-2 w-max flex-nowrap",
+            start && "animate-scroll",
+            pauseOnHover && "hover:[animation-play-state:paused]"
+          )}
+          style={{ animationDirection: "normal" }} // Layer 2: Move to the right
+        >
+          {items.map((item) => (
+            <li
+              key={item.name}
+              className="flex items-center p-2 bg-black rounded-xl border-2 border-gray-600 hover:border-blue-500"
+              style={{
+                width: "120px",
+                height: "40px",
+              }}
+            >
+              <Image
+                src={item.imageSrc}
+                alt={item.name}
+                width={25}
+                height={20}
+                className="object-contain"
+              />
+              {/* Teks */}
+              <span className="text-sm ml-2 text-gray-100">{item.name}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Layer 3 (Move from right to left) */}
+        <ul
+          ref={scrollerRef3}
+          className={cn(
+            "flex min-w-full shrink-0 gap-2 py-4 w-max flex-nowrap",
+            start && "animate-scroll",
+            pauseOnHover && "hover:[animation-play-state:paused]"
+          )}
+          style={{ animationDirection: "reverse" }}
+        >
+          {items.map((item) => (
+            <li
+              key={item.name}
+              className="flex items-center p-2 bg-black rounded-xl border-2 border-gray-600 hover:border-blue-500"
+              style={{
+                width: "120px",
+                height: "40px",
+              }}
+            >
+              <Image
+                src={item.imageSrc}
+                alt={item.name}
+                width={25}
+                height={20}
+                className="object-contain"
+              />
+              {/* Teks */}
+              <span className="text-sm ml-2 text-gray-100">{item.name}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

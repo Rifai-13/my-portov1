@@ -4,6 +4,7 @@ import HomeSection from "@/components/HomeSection";
 import ProjectSection from "@/components/ProjectSection";
 import ContactSection from "@/components/ContactSection";
 import { Contact } from "lucide-react";
+import SkillSection from "@/components/SkillSection";
 
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
     <HomeSection />
     <AboutSection />
     <ExperienceSection />
+    <SkillSection />
     <ProjectSection />
     <ContactSection />
     </div>
