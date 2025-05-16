@@ -25,19 +25,18 @@ export default function AboutSection() {
             </h2>
             
             <p className="text-muted-foreground mb-4">
-              I'm a passionate full-stack developer with a strong foundation in both front-end and back-end technologies. 
-              With several years of experience in the industry, I've developed a deep understanding of 
-              creating scalable, efficient, and user-friendly web applications.
+              I am an Informatics Engineering student who focuses on developing skills in mobile and web application
+              development. Since starting university, I have been interested in creating digital solutions that can 
+              make people's lives easier. I actively work on various mobile and web application development projects, 
+              which allows me to deepen my understanding of the latest technologies and frameworks used in application
+              development.
             </p>
 
             <p className="text-muted-foreground mb-4">
-              My journey in web development began with a curiosity about how websites work, and it evolved into a 
-              professional career where I continuously learn and adapt to new technologies and best practices.
-            </p>
-
-            <p className="text-muted-foreground mb-6">
-              I believe in clean code, thoughtful architecture, and continuous improvement. My goal is to create 
-              digital experiences that are not only functional but also aesthetically pleasing and intuitive to use.
+              As a developer, I always strive to deliver apps that are responsive, user-friendly, and efficient. 
+              My main focus is on developing mobile and web applications that provide the best user experience. 
+              With a passion for continuous learning and adapting to technological developments, I hope to contribute 
+              in creating useful digital solutions in the future.
             </p>
 
             <Button 
