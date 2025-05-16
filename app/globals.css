@@ -134,3 +134,18 @@ html, body {
 * {
   box-sizing: border-box;
 }
+
+@keyframes scroll {
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+.animate-scroll {
+  animation: scroll var(--animation-duration, 40s) linear infinite;
+  animation-play-state: running;
+}
+
+.animate-scroll:hover {
+  animation-play-state: var(--hover-state, running);
+}
