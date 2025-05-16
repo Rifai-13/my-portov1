@@ -9,7 +9,7 @@ export default function HomeSection() {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden w-full"
     >
       {/* Background Decoration */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
@@ -17,7 +17,7 @@ export default function HomeSection() {
         <div className="absolute bottom-20 right-10 w-80 h-80 bg-blue-700/20 rounded-full filter blur-3xl"></div>
       </div>
 
-      <div className="container relative z-10 flex flex-col items-center justify-center text-center">
+      <div className="container relative z-10 flex flex-col items-center justify-center text-center w-full">
         <motion.div
           initial="hidden"
           animate="visible"

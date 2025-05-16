@@ -11,11 +11,11 @@ export function FloatingNavbar() {
   return (
     <>
       {/* Desktop Navbar (hidden on mobile) */}
-      <div className="hidden md:block fixed top-10 inset-x-0 z-50">
+      <div className="fixed top-10 inset-x-0 max-w-fit mx-auto z-50">
         <motion.div
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="flex items-center justify-center gap-1 mx-auto w-max px-4 py-2 rounded-full border border-blue-600/70 bg-black/80 backdrop-blur-sm"
+          className="flex items-center gap-4 px-4 py-2 rounded-full border border-blue-600/70 backdrop-blur-sm bg-black/60"
         >
           <NavItem href="#home" active={active === "home"} onClick={() => setActive("home")}>
             Home
