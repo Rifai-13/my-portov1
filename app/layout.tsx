@@ -4,6 +4,7 @@ import "./globals.css";
 // import { FloatingNav } from "@/components/ui/floating-navbar";
 import { FloatingNavbar } from "@/components/FloatingNav";
 import { Analytics } from "@vercel/analytics/next";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <FloatingNavbar />
         {children}
         <Analytics />
+        <Toaster position="top-center" richColors/>
       </body>
     </html>
   );

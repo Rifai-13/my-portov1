@@ -17,7 +17,7 @@ export default function ExperienceSection() {
       icon: <Briefcase size={24} />,
       title: "Professional Experience",
       description:
-        "Informatics student with a focus on front-end development using React and Next.js. Skilled in building responsive and efficient web applications, and experienced in full-stack development.",
+        "Informatics student with hands-on experience in web development, focusing on front-end technologies like React and Next.js, and eager to expand skills through further work or internships.",
       items: [
         {
           title: "CV INDO AZKA KONSULTAN",
@@ -46,6 +46,20 @@ export default function ExperienceSection() {
             "Study in SMK 1 WITA PONDAH with a major in Computer and Network Engineering.",
         },
         {
+          title: "Universitas Muhammadiyah Malang",
+          period: "2022 - Present",
+          description:
+            "I am studying at the poor muhammadiyah university with the Informatics study program with a specialization in Lunal Device Engineering.",
+        },
+      ],
+    },
+    {
+      icon: <Users size={24} />,
+      title: "Achievements",
+      description:
+        "Recognized achievements through successful completion of courses and certifications in software development.",
+      items: [
+        {
           title: "CODEPOLITAN Digital Certificate",
           period: "November 2024",
           description:
@@ -71,38 +85,6 @@ export default function ExperienceSection() {
         },
       ],
     },
-    {
-      icon: <Users size={24} />,
-      title: "Achievements",
-      description:
-        "Recognized contributions to projects and the developer community.",
-      items: [
-        {
-          title: "LabAku",
-          period: "2025",
-          description:
-            "I contributed to the creation of Front end with nexjs stack, shadcn/ui, tailwindcss.",
-        },
-        {
-          title: "E-commerce Website",
-          period: "2024",
-          description:
-            "I made a simple shoe store website using vue js as frontend and laravel for backend.",
-        },
-        {
-          title: "Coffe Shop",
-          period: "2024",
-          description:
-            "I have created a company profile website for coffee shope using the basic stack, namely html, css and javascript.",
-        },
-        {
-          title: "Reparatech",
-          period: "2024",
-          description:
-            "I contributed to the process of making the Reparatech website on the frontend and backend where on the backend I used laravel and for the frontend I used next js.",
-        },
-      ],
-    },
   ];
 
   const cardVariants = {
@@ -117,7 +99,7 @@ export default function ExperienceSection() {
     }),
   };
   return (
-    <section id="about" className="py-20">
+    <section id="experience" className="py-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Experiences</h2>
