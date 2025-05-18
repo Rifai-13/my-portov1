@@ -6,8 +6,53 @@ import { slideInFromLeft, slideInFromRight, slideInFromTop } from '@/lib/utils';
 import { Input} from './ui/input';
 import { Textarea } from './ui/textarea';
 import { MapPin, Mail, Phone, Send } from 'lucide-react';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
 export default function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error('Failed to send message');
+
+      toast.success('Message sent successfully!');
+      // setFormData({
+      //   name: '',
+      //   email: '',
+      //   subject: '',
+      //   message: ''
+      // });
+    } catch (error) {
+      toast.error('Failed to send message');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
   return (
   <section
       id="contact"
@@ -70,67 +115,86 @@ export default function ContactSection() {
             </div>
           </motion.div>
 
-          <motion.div
-            className="lg:col-span-3"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={slideInFromRight(0.3)}
-          >
-            <div className="p-6 rounded-xl border border-blue-800/50 bg-card/80 backdrop-blur-sm">
-              <h3 className="text-xl font-semibold mb-6">Send a Message</h3>
+        <motion.div
+        className="lg:col-span-3"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={slideInFromRight(0.3)}
+      >
+        <div className="p-6 rounded-xl border border-blue-800/50 bg-card/80 backdrop-blur-sm">
+          <h3 className="text-xl font-semibold mb-6">Send a Message</h3>
+          
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
+                <Input 
+                  id="name" 
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  placeholder="Your name" 
+                  className="bg-background/50 border-blue-800/50 focus:border-blue-500"
+                />
+              </div>
               
-              <form className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
-                    <Input 
-                      id="name" 
-                      placeholder="Your name" 
-                      className="bg-background/50 border-blue-800/50 focus:border-blue-500"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
-                    <Input 
-                      id="email" 
-                      type="email" 
-                      placeholder="Your email" 
-                      className="bg-background/50 border-blue-800/50 focus:border-blue-500"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium mb-1">Subject</label>
-                  <Input 
-                    id="subject" 
-                    placeholder="Message subject" 
-                    className="bg-background/50 border-blue-800/50 focus:border-blue-500"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
-                  <Textarea 
-                    id="message" 
-                    placeholder="Your message" 
-                    rows={5} 
-                    className="bg-background/50 border-blue-800/50 focus:border-blue-500"
-                  />
-                </div>
-                
-                <Button 
-                  type="submit" 
-                  className="w-full bg-blue-900 hover:bg-blue-700 text-white"
-                >
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
+                <Input 
+                  id="email" 
+                  type="email" 
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="Your email" 
+                  className="bg-background/50 border-blue-800/50 focus:border-blue-500"
+                />
+              </div>
+            </div>
+            
+            <div>
+              <label htmlFor="subject" className="block text-sm font-medium mb-1">Subject</label>
+              <Input 
+                id="subject" 
+                value={formData.subject}
+                onChange={handleChange}
+                required
+                placeholder="Message subject" 
+                className="bg-background/50 border-blue-800/50 focus:border-blue-500"
+              />
+            </div>
+            
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
+              <Textarea 
+                id="message" 
+                value={formData.message}
+                onChange={handleChange}
+                required
+                placeholder="Your message" 
+                rows={5} 
+                className="bg-background/50 border-blue-800/50 focus:border-blue-500"
+              />
+            </div>
+            
+            <Button 
+              type="submit" 
+              className="w-full bg-blue-900 hover:bg-blue-700 text-white"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                'Sending...'
+              ) : (
+                <>
                   <Send className="mr-2 h-4 w-4" />
                   Send Message
-                </Button>
-              </form>
-            </div>
-          </motion.div>
+                </>
+              )}
+            </Button>
+          </form>
+        </div>
+      </motion.div>
         </div>
       </div>
     </section>

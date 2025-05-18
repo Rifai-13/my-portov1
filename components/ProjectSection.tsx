@@ -19,7 +19,6 @@ import { Project } from "@/lib/types";
 import { projects } from "@/lib/data";
 
 export default function ProjectSection() {
-  const [filter, setFilter] = useState<string>("all");
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
   const containerVariants = {
@@ -89,8 +88,8 @@ function ProjectCard({
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
-      <Card className="h-full overflow-hidden group border border-blue-800/50 bg-background/80 backdrop-blur-sm">
-        <div className="relative h-48 overflow-hidden" style={{position: "relative"}}>
+      <Card className="h-full overflow-hidden group border-blue-800/50 bg-background/80 backdrop-blur-sm">
+        <div className="relative h-48 overflow-hidden">
           <Image
             src={project.image}
             alt={project.title}
