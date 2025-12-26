@@ -40,16 +40,16 @@ export default function ExperienceSection() {
         "Formal education and continuous learning through online courses and certifications.",
       items: [
         {
-          title: "SMK NEGERI 1 WITA PONDA",
-          period: "2019 - 2022",
-          description:
-            "Study in SMK 1 WITA PONDAH with a major in Computer and Network Engineering.",
-        },
-        {
           title: "Universitas Muhammadiyah Malang",
           period: "2022 - Present",
           description:
             "I am studying at the poor muhammadiyah university with the Informatics study program with a specialization in Lunal Device Engineering.",
+        },
+        {
+          title: "SMK NEGERI 1 WITA PONDA",
+          period: "2019 - 2022",
+          description:
+            "Study in SMK 1 WITA PONDAH with a major in Computer and Network Engineering.",
         },
       ],
     },
