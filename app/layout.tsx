@@ -32,7 +32,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Sidebar />
-        {children}
+        <main className="pl-0 lg:pl-24 transition-all duration-300 ease-in-out">
+          {children}
+        </main>
         <Analytics />
         <Toaster position="top-center" richColors/>
       </body>

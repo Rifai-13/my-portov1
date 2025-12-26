@@ -10,7 +10,7 @@ export default function HomeSection() {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden w-full bg-[#020617]"
+      className="relative min-h-screen pt-24 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden w-[100vw] lg:-ml-24 bg-[#020617]"
     >
       {/* Background Decoration */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
