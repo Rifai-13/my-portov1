@@ -63,5 +63,14 @@ export const projects: Project[] = [
     technologies: ["Next.js", "Tailwind CSS", "Amazon Rekognition", "TypeScript", "Supabase"],
     demo: "",
     github: "https://github.com/Rifai-13/fotografer"
+  },
+   {
+    id: "project-8",
+    title: "Analiysis & Valuation Saham",
+    description: "This project is a dynamic stock valuation engine built with Next.js and Tailwind CSS. Its key features include an automatic Graham intrinsic value calculator, specialized filters for Dividend/Blue Chip vs. Growth/Small Cap stocks, and tracking of important metrics such as Dividend Yield, PBV Ratio, Payout Ratio, and PER. The system is designed to provide Hold/Fair or Buy signals based on real-time data from the Indonesian stock market.",
+    image: "/image/analiysis.png",
+    technologies: ["Next.js", "Tailwind CSS", "TypeScript"],
+    demo: "https://analysis.rifai-13.my.id/",
+    github: "https://github.com/Rifai-13/stock-dashboard"
   }
 ];
