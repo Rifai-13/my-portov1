@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 // import { FloatingNav } from "@/components/ui/floating-navbar";
-import { FloatingNavbar } from "@/components/FloatingNav";
+import { Sidebar } from "@/components/Sidebar";
 import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "sonner";
 
@@ -31,8 +31,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <FloatingNavbar />
-        {children}
+        <Sidebar />
+        <main className="pl-0 lg:pl-24 transition-all duration-300 ease-in-out">
+          {children}
+        </main>
         <Analytics />
         <Toaster position="top-center" richColors/>
       </body>
